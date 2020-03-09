@@ -8,14 +8,13 @@ import "./Address.sol";
 import "./Counters.sol";
 import "./ERC165.sol";
 import "./WhiteList.sol";
-import "./Fight.sol";
 
 
 /**
  * @title ERC721 Non-Fungible Token Standard basic implementation
  * @dev see https://eips.ethereum.org/EIPS/eip-721
  */
-contract ERC721 is Context, ERC165, IERC721, WhiteList, Fight {
+contract ERC721 is Context, ERC165, IERC721, WhiteList {
     using SafeMath for uint256;
     using Address for address;
     using Counters for Counters.Counter;
@@ -84,7 +83,7 @@ contract ERC721 is Context, ERC165, IERC721, WhiteList, Fight {
         liste_animal[tokenIdOp].earSize * liste_animal[tokenIdOp].earSize, tokenNewAnimal);
     }
 
-    mapping(address => uint256) public fundsByFighter;
+    mapping(address => int256) public fundsByFighter;
     mapping(address => bool) public agreedToFight;
     mapping(address => uint256) public tokenFightList;
 
@@ -107,12 +106,12 @@ contract ERC721 is Context, ERC165, IERC721, WhiteList, Fight {
         tokenFightList[_msgSender()] = tokenId;
         liste_animal[tokenId].fight = true;
         //Fight
-        require(agreedToFight[_msgSender()] = true && agreedToFight[proposeFight()] = true,"");
-        if(liste_animal[tokenId].earSize < liste_animal[tokenFightList[proposeFight]]){
+        require(agreedToFight[_msgSender()] = true && agreedToFight[proposeFight] == true,"");
+        if(liste_animal[tokenId].earSize < liste_animal[tokenFightList[proposeFight]].earSize){
             deadAnimal(tokenFightList[_msgSender()]);
         }
         else{
-            deadAnimal(tokenFightList[manager()]);
+            deadAnimal(tokenFightList[proposeFight]);
         }
     }
 

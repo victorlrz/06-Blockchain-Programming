@@ -18,8 +18,8 @@
  *
  */
 
-var HDWalletProvider = require("truffle-hdwallet-provider");
-var mnemonic = "earn oyster ...";
+//var HDWalletProvider = require("truffle-hdwallet-provider");
+//var mnemonic = "earn oyster ...";
 
 module.exports = {
   /**
@@ -46,14 +46,14 @@ module.exports = {
 
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
-    rinkeby: {
-      provider: function() { 
-       return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/<INFURA_Access_Token>");
-      },
-      network_id: 4,
-      gas: 4500000,
-      gasPrice: 10000000000,
-   },
+    //rinkeby: {
+    //  provider: function() { 
+      // return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/<INFURA_Access_Token>");
+     // },
+     // network_id: 4,
+      //gas: 4500000,
+      //gasPrice: 10000000000,
+   //},
 
     // Useful for private networks
     // private: {
